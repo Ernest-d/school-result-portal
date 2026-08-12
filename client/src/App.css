@@ -1,0 +1,26 @@
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.app h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.app p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.app button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
