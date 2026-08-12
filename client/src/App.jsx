@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { student, results } from './data'
 
 function App() {
   const [showResult, setShowResult] = useState(false)
@@ -9,10 +10,10 @@ function App() {
       <div className="app">
         <h1>My Result</h1>
 
-<p>Student ID: 12345</p>
-<p>Name: Ernest Uko</p>
-<p>Session: 2025/2026</p>
-<p>Semester: First Semester</p>
+<p>Student ID: {student.id}</p>
+<p>Name: {student.name}</p>
+<p>Session: {student.session}</p>
+<p>Semester: {student.semester}</p>
 
 <table>
   <thead>
@@ -26,33 +27,19 @@ function App() {
   </thead>
 
   <tbody>
-    <tr>
-      <td>CSC101</td>
-      <td>Introduction to Computer Science</td>
-      <td>3</td>
-      <td>72</td>
-      <td>A</td>
-    </tr>
-
-    <tr>
-      <td>MTH101</td>
-      <td>Mathematics</td>
-      <td>3</td>
-      <td>65</td>
-      <td>B</td>
-    </tr>
-
-    <tr>
-      <td>PHY101</td>
-      <td>Physics</td>
-      <td>3</td>
-      <td>58</td>
-      <td>C</td>
-    </tr>
+    {results.map((result) => (
+  <tr key={result.courseCode}>
+    <td>{result.courseCode}</td>
+    <td>{result.courseName}</td>
+    <td>{result.unit}</td>
+    <td>{result.score}</td>
+    <td>{result.grade}</td>
+  </tr>
+))}
   </tbody>
 </table>
 
-<p>GPA: 3.42</p>
+<p>GPA: {student.gpa}</p>
 
 
         <button onClick={() => setShowResult(false)}>
