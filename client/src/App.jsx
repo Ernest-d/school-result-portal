@@ -1,19 +1,21 @@
 import { useState } from 'react'
 import './App.css'
-import { student, results } from './data'
+import { students } from './data'
 
 function App() {
-  const [showResult, setShowResult] = useState(false)
+const [showResult, setShowResult] = useState(false)
+const [studentId, setStudentId] = useState('')
+const [selectedStudent, setSelectedStudent] = useState(null)
 
-  if (showResult) {
+if (showResult && selectedStudent) {
     return (
       <div className="app">
         <h1>My Result</h1>
 
-<p>Student ID: {student.id}</p>
-<p>Name: {student.name}</p>
-<p>Session: {student.session}</p>
-<p>Semester: {student.semester}</p>
+<p>Student ID: {selectedStudent.id}</p>
+<p>Name: {selectedStudent.name}</p>
+<p>Session: {selectedStudent.session}</p>
+<p>Semester: {selectedStudent.semester}</p>
 
 <table>
   <thead>
@@ -27,7 +29,7 @@ function App() {
   </thead>
 
   <tbody>
-    {results.map((result) => (
+    {selectedStudent.results.map((result) => (
   <tr key={result.courseCode}>
     <td>{result.courseCode}</td>
     <td>{result.courseName}</td>
@@ -39,12 +41,18 @@ function App() {
   </tbody>
 </table>
 
-<p>GPA: {student.gpa}</p>
+<p>GPA: {selectedStudent.gpa}</p>
 
 
-        <button onClick={() => setShowResult(false)}>
-          Back
-        </button>
+<button
+  onClick={() => {
+    setShowResult(false)
+    setSelectedStudent(null)
+    setStudentId('')
+  }}
+>
+  Back
+</button>
       </div>
     )
   }
@@ -53,11 +61,31 @@ function App() {
     <div className="app">
       <h1>School Result Portal</h1>
 
-      <p>A simple way to access student results.</p>
+<p>A simple way to access student results.</p>
 
-      <button onClick={() => setShowResult(true)}>
-        View Result
-      </button>
+<input
+  type="text"
+  placeholder="Enter Student ID"
+  value={studentId}
+  onChange={(e) => setStudentId(e.target.value)}
+/>
+
+<button
+  onClick={() => {
+    const student = students.find(
+      (student) => student.id === studentId
+    )
+
+if (student) {
+  setSelectedStudent(student)
+  setShowResult(true)
+} else {
+  alert('Student not found. Please check the Student ID.')
+}
+  }}
+>
+  View Result
+</button>
     </div>
   )
 }
