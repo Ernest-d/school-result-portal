@@ -20,7 +20,7 @@ function App() {
         <p>Enter password to access the portal.</p>
 
         <input
-          type="password"
+          type="text"
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
