@@ -1,48 +1,321 @@
-.app {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 40px 20px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+.login-card,
+.main-card,
+.result-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.login-card,
+.main-card {
+  max-width: 520px;
+  padding: 45px;
   text-align: center;
 }
 
-.app h1 {
-  font-size: 40px;
-  margin-bottom: 15px;
-}
-
-.app p {
+.logo-circle {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #111827;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
   font-size: 18px;
-  margin-bottom: 30px;
 }
 
-.app button {
-  padding: 12px 24px;
+h1 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  color: #111827;
+}
+
+h2 {
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+.subtitle {
+  margin: 0 auto 30px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.small-title {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: #6b7280;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 18px 0 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #374151;
+}
+
+input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+}
+
+input:focus {
+  border-color: #111827;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px 18px;
   border: none;
-  border-radius: 5px;
-  background: #2563eb;
+  border-radius: 8px;
+  background: #111827;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
-.app table {
-  width: 100%;
-  margin: 30px 0;
-  border-collapse: collapse;
-  background: white;
+.primary-button:hover {
+  background: #374151;
 }
 
-.app th,
-.app td {
-  border: 1px solid #ddd;
-  padding: 12px;
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-section {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #e5e7eb;
   text-align: left;
 }
 
-.app th {
-  background: #f0f0f0;
+.search-description {
+  color: #6b7280;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
-.app td {
-  font-size: 15px;
+.text-button {
+  margin-top: 15px;
+  border: none;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  margin: 35px 0 0;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.result-card {
+  max-width: 950px;
+  padding: 35px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.student-badge {
+  background: #f3f4f6;
+  padding: 9px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.student-info {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.student-info div {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.student-info span,
+.gpa-box span {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.student-info strong {
+  font-size: 14px;
+  color: #111827;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  background: #111827;
+  color: white;
+  text-align: left;
+  padding: 13px;
+  font-size: 13px;
+}
+
+td {
+  padding: 13px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.grade {
+  display: inline-block;
+  min-width: 30px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #f3f4f6;
+  font-weight: bold;
+  text-align: center;
+}
+
+.gpa-box {
+  margin-top: 25px;
+  padding: 18px;
+  background: #f9fafb;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gpa-box strong {
+  font-size: 24px;
+  color: #111827;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.secondary-button,
+.logout-button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.secondary-button {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+}
+
+.logout-button {
+  border: none;
+  background: #111827;
+  color: white;
+}
+
+@media (max-width: 750px) {
+  .student-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .result-card {
+    padding: 22px;
+  }
+
+  .result-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-card,
+  .main-card {
+    padding: 30px 22px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  .student-info {
+    grid-template-columns: 1fr;
+  }
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .secondary-button,
+  .logout-button {
+    width: 100%;
+  }
 }

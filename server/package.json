@@ -1,17 +1,14 @@
 {
-  "name": "server",
+  "name": "school-result-portal-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend for the School Result Portal",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "better-sqlite3": "^13.0.3",
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "better-sqlite3": "^12.4.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
   }
 }
