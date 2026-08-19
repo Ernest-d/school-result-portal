@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import { students } from './data'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -65,9 +64,9 @@ function App() {
 
           <tbody>
             {selectedStudent.results.map((result) => (
-              <tr key={result.courseCode}>
-                <td>{result.courseCode}</td>
-                <td>{result.courseName}</td>
+              <tr key={result.course_code}>
+                <td>{result.course_code}</td>
+                <td>{result.course_name}</td>
                 <td>{result.unit}</td>
                 <td>{result.score}</td>
                 <td>{result.grade}</td>
@@ -122,20 +121,29 @@ function App() {
           />
 
           <button
-            onClick={() => {
-              const student = students.find(
-                (student) =>
-                  student.name.toLowerCase() === fullName.toLowerCase() &&
-                  student.session.includes(examYear)
-              )
+onClick={async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/results?name=${encodeURIComponent(fullName)}&year=${encodeURIComponent(examYear)}`
+    )
 
-              if (student) {
-                setSelectedStudent(student)
-                setShowResult(true)
-              } else {
-                alert('Student result not found. Please check the details.')
-              }
-            }}
+    if (!response.ok) {
+      alert('Student result not found. Please check the details.')
+      return
+    }
+
+    const student = await response.json()
+
+    setSelectedStudent(student)
+    setShowResult(true)
+  } catch (error) {
+    console.error('Error fetching student result:', error)
+
+    alert(
+      'Unable to connect to the server. Please make sure the backend is running.'
+    )
+  }
+}}
           >
             View Result
           </button>
